@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75becfee5677ff54fa1b8dc8c61308b0, type: 3}
+  m_Name: TableConfiguration0
+  m_EditorClassIdentifier: 
+  <TicketPrefab>k__BackingField: {fileID: 1856538593179795631, guid: c65ad8d4ecd06c34a889fdf13882451e, type: 3}
+  <TicketListPrefab>k__BackingField: {fileID: 6811552853786157094, guid: b8d694066b46f4348a4f5c07d5e1ab1c, type: 3}
