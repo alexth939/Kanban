@@ -14,24 +14,28 @@ namespace Tickets
 
         public TicketGroupView PotentialReciever { get; set; }
 
-        //public int TargetSiblingIndex { get; set; }
-        private int _targetSiblingIndex;
-        public int TargetSiblingIndex
-        {
-            get => _targetSiblingIndex;
-            set
-            {
-                UnityEngine. Debug.Log($"setting sibling index to: {value}");
-                _targetSiblingIndex = value;
-            }
-        }
+        public int OriginalSiblingIndex { get; private set; }
 
-        public void Start(TicketView drivenTicket, TicketGroupView ticketHolder)
+        public int TargetSiblingIndex { get; set; }
+        //private int _targetSiblingIndex;
+        //public int TargetSiblingIndex
+        //{
+        //    get => _targetSiblingIndex;
+        //    set
+        //    {
+        //        UnityEngine. Debug.Log($"setting sibling index to: {value}");
+        //        _targetSiblingIndex = value;
+        //    }
+        //}
+
+        public void Start(TicketView drivenTicket)
         {
-            DrivenTicket = drivenTicket;
             Stage = DraggingStage.Dragging;
-            TicketHolder = ticketHolder;
-            PotentialReciever = ticketHolder;
+            DrivenTicket = drivenTicket;
+            TicketHolder = drivenTicket.Holder;
+            PotentialReciever = drivenTicket.Holder;
+            OriginalSiblingIndex = drivenTicket.transform.GetSiblingIndex();
+            TargetSiblingIndex = OriginalSiblingIndex;
         }
 
         public void End()

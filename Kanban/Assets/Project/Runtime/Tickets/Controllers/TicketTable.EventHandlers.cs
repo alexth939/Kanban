@@ -7,11 +7,11 @@ namespace Tickets
     {
         private readonly DraggingSession _currentDraggingSession;
 
-        private void OnStartingTicketDrag(TicketView ticket, TicketGroupView ticketHolder)
+        private void OnStartingTicketDrag(TicketView ticket)
         {
-            _currentDraggingSession.Start(ticket, ticketHolder);
+            _currentDraggingSession.Start(ticket);
             ticket.gameObject.SetActive(false);
-            ticketHolder.ShowPlaceSelector(ticket.transform.GetSiblingIndex());
+            ticket.Holder.ShowPlaceSelector(ticket.transform.GetSiblingIndex());
         }
 
         private void OnGlobalPointerUp()
@@ -23,11 +23,11 @@ namespace Tickets
         private void OnEndingTicketDrag()
         {
             var drivenTicket = _currentDraggingSession.DrivenTicket;
-            var holder = _currentDraggingSession.TicketHolder;
             var reciever = _currentDraggingSession.PotentialReciever;
             int targetSiblingIndex = _currentDraggingSession.TargetSiblingIndex;
 
-            TransferTicket(drivenTicket, holder, reciever, targetSiblingIndex);
+            TransferTicket(drivenTicket, reciever, targetSiblingIndex);
+
             drivenTicket.gameObject.SetActive(true);
             reciever.HidePlaceSelector();
         }
@@ -58,7 +58,7 @@ namespace Tickets
             if(_currentDraggingSession.Stage is DraggingStage.Dragging)
             {
                 _currentDraggingSession.PotentialReciever = _currentDraggingSession.TicketHolder;
-                _currentDraggingSession.TargetSiblingIndex = -1;
+                _currentDraggingSession.TargetSiblingIndex = _currentDraggingSession.OriginalSiblingIndex;
                 group.HidePlaceSelector();
             }
         }

@@ -41,7 +41,6 @@ namespace Tickets
                 _tableView.AddList(listView);
 
                 listView.SetTitle(group.Title);
-                listView.StartingTicketDrag += OnStartingTicketDrag;
                 listView.PointerEntered += OnPointerEnteredGroup;
                 listView.PointerMoved += OnPointerMovedOnCurrentGroup;
                 listView.PointerExited += OnPointerExitedGroup;
@@ -52,22 +51,15 @@ namespace Tickets
 
                     ticketView.SetTitle(ticket.Title);
                     ticketView.SetContent(ticket.TextContent);
-                    listView.AddTicket(ticketView);
+                    ticketView.StartingDrag += OnStartingTicketDrag;
+                    listView.InsertTicket(ticketView);
                 }
             }
         }
 
-        private void TransferTicket(TicketView ticket, TicketGroupView holder, TicketGroupView reciever, int siblingIndex)
+        private void TransferTicket(TicketView ticket, TicketGroupView reciever, int siblingIndex)
         {
-            if(reciever == holder)
-            {
-                ticket.transform.SetSiblingIndex(siblingIndex);
-            }
-            else
-            {
-                holder.UnBindTicket(ticket);
-                reciever.InsertTicket(ticket, siblingIndex);
-            }
+            reciever.InsertTicket(ticket, siblingIndex);
         }
     }
 }

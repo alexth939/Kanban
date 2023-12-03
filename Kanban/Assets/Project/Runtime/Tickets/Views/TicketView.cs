@@ -1,60 +1,34 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 
 namespace Tickets
 {
-    public class TicketView : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerEnterHandler, IPointerExitHandler
+    public class TicketView : MonoBehaviour, IBeginDragHandler, IPointerClickHandler
     {
-        [SerializeField] private TextMeshProUGUI _titleField;
         [SerializeField] private TextMeshProUGUI _contentField;
+        [SerializeField] private TextMeshProUGUI _titleField;
 
         public event Action<TicketView> StartingDrag;
 
-        public void OnClicked()
-        {
-            Debug.Log($"card: clicked");
-        }
+        public TicketGroupView Holder { get; internal set; }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            // grab card
-            Debug.Log($"Drag started");
+        public void OnBeginDrag(PointerEventData eventData) => StartingDrag?.Invoke(this);
+        //{
+        //    // grab card
+        //    // Debug.Log($"Drag started");
 
-            StartingDrag?.Invoke(this);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            // draw card at cursor position
-            //Debug.Log($"Draging");
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            // Highlight
-        }
-
-        public void SetTitle(string text) => _titleField.SetText(text);
+        //    StartingDrag?.Invoke(this);
+        //}
 
         public void SetContent(string text) => _contentField.SetText(text);
 
-        public void OnPointerExit(PointerEventData eventData)
+        public void SetTitle(string text) => _titleField.SetText(text);
+
+        public void OnPointerClick(PointerEventData eventData)
         {
-            // Dim
-        }
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-
+            Debug.Log($"card: clicked");
         }
     }
 }

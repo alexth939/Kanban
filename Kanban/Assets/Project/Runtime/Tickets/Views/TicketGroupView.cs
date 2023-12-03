@@ -12,7 +12,6 @@ namespace Tickets
         [SerializeField] private Transform _ticketsContainer;
         [SerializeReference] private TextMeshProUGUI _title;
 
-        public event Action<TicketView, TicketGroupView> StartingTicketDrag;
         public event Action TicketDragged;
         public event Action<TicketGroupView, Vector2> PointerEntered;
         public event Action<Vector2> PointerMoved;
@@ -20,27 +19,18 @@ namespace Tickets
 
         public void SetTitle(string text) => _title.text = text;
 
-        public void AddTicket(TicketView ticket)
+        public void InsertTicket(TicketView ticket)
         {
+            ticket.Holder = this;
             ticket.transform.SetParent(_ticketsContainer.transform);
-            ticket.StartingDrag += OnStartingTicketDrag;
+            ticket.transform.SetAsLastSibling();
         }
 
         public void InsertTicket(TicketView ticket, int siblingIndex)
         {
+            ticket.Holder = this;
             ticket.transform.SetParent(_ticketsContainer.transform);
             ticket.transform.SetSiblingIndex(siblingIndex);
-            ticket.StartingDrag += OnStartingTicketDrag;
-        }
-
-        public void UnBindTicket(TicketView ticket)
-        {
-            ticket.StartingDrag -= OnStartingTicketDrag;
-        }
-
-        private void OnStartingTicketDrag(TicketView ticket)
-        {
-            StartingTicketDrag?.Invoke(ticket, this);
         }
 
         [Obsolete("Used by the engine.", false)]
