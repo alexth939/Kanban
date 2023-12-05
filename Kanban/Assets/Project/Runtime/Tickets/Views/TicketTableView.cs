@@ -7,13 +7,16 @@ namespace Tickets
     public class TicketTableView : MonoBehaviour, ITicketTable
     {
         private readonly List<TicketGroupView> _ticketListCollection = new();
+        [SerializeReference] private Transform _groupsContainer;
 
         public event Action<TicketGroupView> PointerEnteredList;
         public event Action<TicketGroupView> PointerExitedList;
 
+        [field: SerializeReference] public RectTransform Viewport { get; private set; }
+
         public void DestroyContent()
         {
-            foreach(Transform child in this.transform)
+            foreach(Transform child in _groupsContainer)
             {
                 Destroy(child.gameObject);
             }
@@ -30,7 +33,7 @@ namespace Tickets
         internal void AddList(TicketGroupView listView)
         {
             _ticketListCollection.Add(listView);
-            listView.transform.SetParent(this.transform);
+            listView.transform.SetParent(_groupsContainer);
         }
 
         private void OnEndingTicketDrag(DraggingSession session)

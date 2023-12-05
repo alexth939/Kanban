@@ -41,6 +41,7 @@ namespace Tickets
                 _tableView.AddList(listView);
 
                 listView.SetTitle(group.Title);
+                listView.SetMinHeightTarget(_tableView.Viewport);
                 listView.PointerEntered += OnPointerEnteredGroup;
                 listView.PointerMoved += OnPointerMovedOnCurrentGroup;
                 listView.PointerExited += OnPointerExitedGroup;

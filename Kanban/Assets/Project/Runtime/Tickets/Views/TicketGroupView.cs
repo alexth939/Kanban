@@ -36,6 +36,17 @@ namespace Tickets
         [Obsolete("Used by the engine.", false)]
         public void OnPointerEnter(PointerEventData eventData) => PointerEntered?.Invoke(this, eventData.position);
 
+        internal void SetMinHeightTarget(RectTransform viewport)
+        {
+            //return;
+
+            var layoutElement = this.gameObject.AddComponent<AP.UI.AdvancedLayoutElement>();
+
+            layoutElement[AP.UI.LayoutProperty.MinHeight].Correction = -20;
+            layoutElement[AP.UI.LayoutProperty.MinHeight].Override = viewport;
+            layoutElement[AP.UI.LayoutProperty.MinHeight].Enabled = true;
+        }
+
         public void ShowPlaceSelector(int siblingIndex)
         {
             SetPlaceSelectorPosition(siblingIndex);

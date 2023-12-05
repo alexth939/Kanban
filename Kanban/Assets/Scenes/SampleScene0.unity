@@ -213,6 +213,18 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1409151314}
+    Ordinal: 5
+    Priority: 0
+    IconType: 0
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 150
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
 --- !u!4 &38740366
 Transform:
   m_ObjectHideFlags: 0
@@ -541,9 +553,8 @@ GameObject:
   - component: {fileID: 811855042}
   - component: {fileID: 811855043}
   - component: {fileID: 811855044}
-  - component: {fileID: 811855045}
   m_Layer: 5
-  m_Name: Ticket Table
+  m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,19 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
-  m_VerticalFit: 1
---- !u!114 &811855045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811855041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2101a848e9f9394c90977998e3ed985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_VerticalFit: 2
 --- !u!1 &857915867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tableConfiguration: {fileID: 11400000, guid: f3c80b7087dc5a24592fe97ea2176da2, type: 2}
-  _tableView: {fileID: 811855045}
+  _tableView: {fileID: 1409151319}
 --- !u!4 &1332816233
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,8 +1196,9 @@ GameObject:
   - component: {fileID: 1409151318}
   - component: {fileID: 1409151317}
   - component: {fileID: 1409151316}
+  - component: {fileID: 1409151319}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Ticket Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Content: {fileID: 811855042}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1295,6 +1295,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409151314}
   m_CullTransparentMesh: 1
+--- !u!114 &1409151319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409151314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2101a848e9f9394c90977998e3ed985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupsContainer: {fileID: 811855042}
+  <Viewport>k__BackingField: {fileID: 168439699}
 --- !u!1 &1421731475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeSelector: {fileID: 1346908862}
   _ticketsContainer: {fileID: 1090652316}
-  _title: {fileID: 0}
+  _title: {fileID: 1857831619}
 --- !u!114 &1421731478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,8 +2059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084d32aab931fbb419148d81cfc0d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _titleField: {fileID: 1856538593395039059}
   _contentField: {fileID: 1856538593206084556}
+  _titleField: {fileID: 1856538593395039059}
 --- !u!114 &1856538593106705092
 MonoBehaviour:
   m_ObjectHideFlags: 0
